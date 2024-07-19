@@ -46,6 +46,9 @@ body{
     font-size: 14px;
     font-weight: 700;
 }
+.mobil-header-user-icon:hover{
+    cursor: pointer;
+}
 .mobil-header-submenu{
     background-color: var(--activeDark);
     border: 0;
@@ -148,6 +151,9 @@ body{
     color: var(--akzent);
     font-size: 14px;
     font-weight: 700;
+}
+.header-user-icon:hover{
+    cursor: pointer;
 }
 .desktop-header-title{
     font-size: 20px;

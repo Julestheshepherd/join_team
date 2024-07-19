@@ -10,40 +10,9 @@
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <div class="mobil-header">
-            <img src="./assets/img/logo/logo-mobil.png" alt="mobil-header-logo">
-            <div class="mobil-header-user-icon" id="user-icon-button">MM</div>
-
-            <div class="mobil-header-submenu slide-out" id="header-submenu">
-                <a href="./help.html"><button class="mobil-header-submenu-button">Help</button></a>
-                <a href="./legalnotice.html"><button class="mobil-header-submenu-button">Legal Notice</button></a>
-                <a href="./privacypolicy.html"><button class="mobil-header-submenu-button">Privacy Policy</button></a>
-                <a href="#"><button class="mobil-header-submenu-button">Log out</button></a>
-            </div>    
-        </div>
-
-        <div class="desktop-header">
-            <p class="desktop-header-title">Kanban Project Managment Tool</p>
-            <div class="header-user-icon" id="user-icon-button">MM</div>
-        </div>
-    </header>
-
-    <div class="sidebar">
-        <div class="sidebar-header">
-            <img src="./assets/img/logo/logo-sidebar.png" alt="Join Logo">
-        </div>
-        <div class="sidebar-buttons">
-            <a href="./summary.html"><button class="sidebar-button"><img src="./assets/img/icons/sidebar-summary.png">Summary</button></a>
-            <a href="./addtask.html"><button class="sidebar-button"><img src="./assets/img/icons/sidebar-addtask.png">Add Task</button></a>
-            <a href="./board.html"><button class="sidebar-button"><img src="./assets/img/icons/sidebar-board.png">Board</button></a>
-            <a href="./contacts.html"><button class="sidebar-button"><img src="./assets/img/icons/sidebar-contacts.png">Contacts</button></a>
-        </div>
-        <div class="sidebar-buttons">
-            <a href="./privacypolicy.html"><button class="sidebar-button">Privacy Policy</button></a>
-            <a href="./legalnotice.html"><button class="sidebar-button">Legal Notice</button></a>
-        </div>
-    </div>
+    <div w3-include-html="header.html"></div>
+    <div w3-include-html="sidebar.html"></div>
+    <div w3-include-html="footer.html"></div>
 
     <div class="content">
         <h2>Privacy Policy</h2>
@@ -79,6 +48,7 @@
             <button class="mobil-nav-button"><img class="mobil-nav-button-icon" src="./assets/img/icons/mobil_menu/contacts.png"> Contacts</button>
         </nav>
     </footer>
+    <script src="./scripts/include.js"></script>
     <script src="./scripts/navigation.js"></script>
 </body>
 </html>
