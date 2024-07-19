@@ -23,13 +23,26 @@ body{
     font-size: 16px;
     font-weight: 400;
 }
+button:hover{
+    cursor: pointer;
+}
+.w-25{
+    width: 25%;
+}
+.w-75{
+    width: 75%;
+}
 header{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 32px 32px;
 }
-
+.header-signup{
+    display: none;
+    align-items: center;
+    gap: 35px;
+}
 .content{
     padding: 32px 16px;
     display: flex;
@@ -38,7 +51,9 @@ header{
     align-items: center;
     position: absolute;
     bottom: 0;
-    top: 120px
+    top: 180px;
+    left: 0;
+    right: 0;
 }
 .login-window{
     padding: 32px 16px;
@@ -55,6 +70,12 @@ header{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.signup-window-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 .login-window-title{
     font-size: 47px;
@@ -92,12 +113,20 @@ form a:hover{
     background-position-x: 324px;
     background-repeat: no-repeat;
     outline: none;
+    line-height: 48px;
+    font-size: 20px;
 }
 .login-input-field:nth-child(1){
     background-image: url('/assets/img/icons/mail.png');
 }
 .login-input-field:nth-child(2){
     background-image: url('/assets/img/icons/lock.png');
+}
+::placeholder{
+    font-size: 20px;
+
+    font-weight: 400;
+    color: #D1D1D1;
 }
 .login-input-field:focus{
     border: 1px solid var(--akzent);
@@ -164,3 +193,26 @@ form a:hover{
     position: sticky;
 }
 
+
+@media(min-width: 700px){
+    .login-window{
+        width: 500px;
+    }
+    .footer-signup{
+        display: none;
+    }
+    .header-signup{
+        display: flex;
+    }
+    .login-window{
+        padding: 48px;
+
+    }
+}
+
+@media (max-width: 440px){
+    .login-input-field{
+        height: 48px;
+        width: 200px;
+    }
+}
