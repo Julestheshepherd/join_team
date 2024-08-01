@@ -1,0 +1,263 @@
+.content{
+    padding: 32px 16px;
+}
+
+.content-head{
+  
+    gap: 30px;
+}
+.content-title{
+    font-size: 47px;
+    font-weight: 700;
+    line-height: 56.4px;
+    margin: 0;
+}
+.devider{
+    border-bottom: 3px solid #29ABE2;
+    border-radius: 1px;
+    width: 90px;
+    margin-top: 16px;
+}
+.content-subtitle{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #2A3647;
+    margin: 0;
+}
+.summary-content{
+    display: flex;
+    width: 100%;
+    gap: 32px;
+    margin-top: 32px;
+}
+.summary-left{
+    width: 100%;
+    height: 100%;
+}
+.summary-left-row{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 32px;
+    gap: 18px;
+}
+.summary-button-s{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    gap: 18px;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.summary-button-s:hover{
+    background-color: var(--dark);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.summary-button-s:active{
+    background-color: var(--dark);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.summary-button-l{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: white;
+    gap: 18px;
+    padding: 38px;
+    border-radius: 30px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.summary-button-l:hover{
+    background-color: var(--dark);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.summary-button-l:active{
+    background-color: var(--dark);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.summary-button-xl{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    gap: 10px;
+    padding: 38px;
+    border-radius: 20px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+.summary-button-xl:hover{
+    background-color: var(--dark);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.summary-button-xl:active{
+    background-color: var(--dark);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.summary-button-big-left{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 18px;
+    width: 50%;
+}
+.summary-button-big-right{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+}
+.summary-button-icon{
+    height: 40px;
+}
+.summary-button-data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.summary-button-number{
+    font-size: 47px;
+    font-weight: 600;
+    line-height: 56.4px;
+    margin: 0;
+}
+.summary-button-subtitle{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.8px;
+    margin: 0;
+    text-align: center;
+}
+.summary-button-big-date{
+    font-size: 21px;
+    font-weight: 700;
+    margin: 0;
+}
+.summary-button-devider{
+    height: 100%;
+    border-left: 2px solid #D1D1D1 ;
+}
+
+
+
+
+
+.summary-right{
+    width: 50%;
+    height: 100%;
+}
+.summary-right-greeting{
+    font-size: 47px;
+    font-weight: 500;
+    line-height: 56.4px;
+    color: #2A3647;
+}
+.summary-right-name{
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 76.8px;
+    color: #29ABE2;
+}
+
+
+
+.help-list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.help-list-item{
+    display: flex;
+    gap: 35px;
+}
+
+.d-none{
+    display: none;
+}
+
+.p-sticky{
+    position: sticky;
+}
+
+
+@keyframes slide-left {
+	0% {
+		transform: translateX(180px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-right {
+	0% {
+		transform: translateX(0);
+	}
+
+	100% {
+		transform: translateX(180px);
+        display: none;
+	}
+}
+
+@keyframes anim-background {
+    0% {
+
+
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+@keyframes anim-logo {
+    0% {
+        scale: 1;
+    }
+    100% {
+        scale: 0.25;
+    }
+}
+
+
+@media(min-width: 700px){
+    footer{
+        display: none;
+    }
+    .content{
+        margin-left: 232px;
+        padding: 64px;
+        overflow: hidden;
+    }
+    .mobil-header{
+        display: none;
+    }
+
+}
+
+@media (max-width: 699px){
+    .sidebar{
+        display: none;
+    }
+    .desktop-header{
+        display: none;
+    }
+}

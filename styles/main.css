@@ -249,37 +249,10 @@ nav{
     height: 24px;
 }
 .content{
-    padding: 0 16px;
+    padding: 16px 16px;
     overflow: scroll;
 }
-.content h2{
-    font-size: 47px;
-    font-weight: 700;
-    line-height: 56.4px;
-    color: #000000;
-}
-.content h3{
-    font-size: 27px;
-    font-weight: 700;
-    line-height: 32.4px;
-    color: #000000;
-    margin-bottom: 10px;
-}
-.content p{
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 19.2px;
-    margin: 0;
-}
-.help-list{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-.help-list-item{
-    display: flex;
-    gap: 35px;
-}
+
 
 .d-none{
     display: none;

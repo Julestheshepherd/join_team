@@ -47,8 +47,9 @@ header{
     padding: 32px 16px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    margin: 0;
     position: absolute;
     bottom: 0;
     top: 180px;
@@ -206,7 +207,9 @@ form a:hover{
     }
     .login-window{
         padding: 48px;
-
+    }
+    .content{
+        margin-left: 0;
     }
 }
 

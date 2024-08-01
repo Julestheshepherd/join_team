@@ -4,16 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="./styles/summary-style.css">
+    <link rel="stylesheet" href="./styles/fonts.css">
 
-    <title>JOIN</title>
+    <title>Summary</title>
 </head>
 <body>
     <div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="footer.html"></div>
-    
+
+    <div class="content">
+        <div class="content-head">
+            <h2 class="content-title">JOIN 360</h2>
+            <p class="content-subtitle">Key Metrics at a Glance</p>
+            <div class="devider"></div>
+        </div>
+
+        <div class="summary-content">
+            <div class="summary-left">
+                <div class="summary-left-row">
+                    <div class="summary-button-l">
+                        <img class="summary-button-icon" src="./assets/img/icons/pencil.png">
+                        <div class="summary-button-data">
+                            <p class="summary-button-number">1</p>
+                            <p class="summary-button-subtitle">To-do</p>    
+                        </div>
+                        
+                    </div>
+                    <div class="summary-button-l">
+                        <img class="summary-button-icon" src="./assets/img/icons/check.png">
+                        <div class="summary-button-data">
+                            <p class="summary-button-number">1</p>
+                            <p class="summary-button-subtitle">Done</p>
+                        </div>
+                    </div>    
+                </div>
+                <div class="summary-left-row">
+                    <div class="summary-button-xl">
+                        <div class="summary-button-big-left">
+                            <img class="summary-button-icon" src="./assets/img/icons/urgent.png">
+                            <div class="summary-button-data">
+                                <p class="summary-button-number">1</p>
+                                <p class="summary-button-subtitle">Urgent</p>    
+                            </div>    
+                        </div>
+                        
+                        
+                        <div class="summary-button-devider"></div>
+                        
+                        <div class="summary-button-big-right">
+                            <p class="summary-button-big-date">October 6, 2024</p>
+                            <p class="summary-button-subtitle">Upcomming Deadline</p>
+                        </div>
+                    </div>
+                </div> 
+                <div class="summary-left-row">
+                    <div class="summary-button-s">
+                        <div class="summary-button-data">
+                            <p class="summary-button-number">1</p>
+                            <p class="summary-button-subtitle">Tasks in Board</p>    
+                        </div>
+                        
+                    </div>
+                    <div class="summary-button-s">
+                        <div class="summary-button-data">
+                            <p class="summary-button-number">1</p>
+                            <p class="summary-button-subtitle">Tasks in Progress</p>
+                        </div>
+                    </div>   
+                    <div class="summary-button-s">
+                        <div class="summary-button-data">
+                            <p class="summary-button-number">1</p>
+                            <p class="summary-button-subtitle">Awaiting Feedback</p>
+                        </div>
+                    </div>  
+                </div>     
+            </div>
+
+
+            <div class="summary-right d-none">
+                <p class="summary-right-greeting">Good Morning</p>
+                <p class="summary-right-name">Max Mustermann</p>
+            </div>    
+        </div>
+        
+
+
+
+    </div>
+
     <script src="./scripts/include.js"></script>
     <script src="./scripts/navigation.js"></script>
 </body>
