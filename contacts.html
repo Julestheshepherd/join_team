@@ -59,11 +59,26 @@
         
         <!-- Contact Detail Modal -->
         <div id="contact-detail-modal" class="modal d-none">
+            <div class="modal-header">
+                <div class="modal-header-close">
+                    <img class="modal-header-close-icon" id="close-detail-modal" src="./assets/img/icons/arrow-left-line.png" alt="Close Button">
+                </div>
+                <h2 class="modal-title">Contacts</h2>
+                <p class="modal-subtitle">Better with a team</p>
+                <div class="devider"></div>    
+            </div>
             <div class="modal-content">
-                <span class="close" id="close-detail-modal">&times;</span>
-                <h2 id="contact-name"></h2>
-                <p id="contact-email"></p>
-                <p id="contact-phone"></p>
+                <div class="contact-modal-name-container">
+                    <div class="initials-container">XX</div>
+                    <p class="contact-modal-name" id="contact-name"></p>    
+                </div>
+
+                <p class="contact-modal-subtitle">Contact Information</p>
+                <p class="contact-category">Email</p>
+                <p class="contact-email" id="contact-email"></p>
+                <p class="contact-category">Phone</p>
+                <p class="contact-phone" id="contact-phone"></p>
+                <button class="contact-add-btn" id=""><img class="contact-add-btn-icon" src="./assets/img/icons/Menu Contact options.png"></button>
             </div>
         </div>
        
