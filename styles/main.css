@@ -36,6 +36,12 @@ h5{
 h6{
     font-size: 12px;
 }
+.center{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 .button{
     background-color: #2a3647 ;
@@ -65,19 +71,21 @@ h6{
 }
 
 /* ---------- Mobil Header ---------- */
-.content{
-    z-index: 100;
-}
+
 
 .mobil-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 0px 20px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
     background-color: white;
+    
 }
 .mobil-header-user-icon{
     display: flex;
@@ -206,11 +214,9 @@ h6{
     line-height: 24px;
 }
 
-
-
 footer{
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -248,18 +254,9 @@ nav{
 .mobil-nav-button-icon{
     height: 24px;
 }
-.content{
-    padding: 16px 16px;
-    overflow: scroll;
-}
-
 
 .d-none{
     display: none;
-}
-
-.p-sticky{
-    position: sticky;
 }
 
 

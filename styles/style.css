@@ -265,12 +265,44 @@ nav{
     color: #000000;
     margin-bottom: 10px;
 }
-.content p{
+/* .content p{
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
     margin: 0;
+} */
+ .greeting-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80vh;
+ }
+ .greeting-guest{
+    display: flex;
+    justify-content: center;
+ }
+ .greeting-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+.greeting{
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 43.2px;
+    margin: 0;
+    text-align: center;
 }
+.greeting-name{
+    font-size: 47px;
+    font-weight: 700;
+    line-height: 56.4px;
+    margin: 0;
+    color: var(--akzent);
+    text-align: center;
+}
+
 .help-list{
     display: flex;
     flex-direction: column;

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/summary-style.css">
+    <link rel="stylesheet" href="./styles/contacts-style.css">
     <link rel="stylesheet" href="./styles/fonts.css">
 
-    <title>Summary</title>
+    <title>contacts</title>
 </head>
 <body>
     <div w3-include-html="header.html"></div>
@@ -16,11 +16,116 @@
     <div w3-include-html="footer.html"></div>
 
     <div class="content">
-  
+        <div class="contact-list">
+            <div class="contact-list-letter-item">
+                <p class="contact-list-letter">A</p>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    AM
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">Anton Mayer</p>
+                    <p class="contact-list-contact-email">antonm@mail.de</p>
+                </div>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    AS
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">Anja Schulz</p>
+                    <p class="contact-list-contact-email">anjaschulz@mail.de</p>
+                </div>
+            </div>
+
+            <div class="contact-list-letter-item">
+                <p class="contact-list-letter">B</p>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    BZ
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">Benedigt Ziegler</p>
+                    <p class="contact-list-contact-email">Benzie@mail.de</p>
+                </div>
+            </div>
+
+            <div class="contact-list-letter-item">
+                <p class="contact-list-letter">D</p>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    DE
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">David Eisenberg</p>
+                    <p class="contact-list-contact-email">davideis@mail.de</p>
+                </div>
+            </div>
+
+            <div class="contact-list-letter-item">
+                <p class="contact-list-letter">E</p>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    EF
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">Eva Fischer</p>
+                    <p class="contact-list-contact-email">evafis@mail.de</p>
+                </div>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    EM
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">Emmanuel Mauer</p>
+                    <p class="contact-list-contact-email">emmmau@mail.de</p>
+                </div>
+            </div>
+            <div class="contact-list-item">
+                <div class="contact-list-initials">
+                    ES
+                </div>
+                <div class="contact-list-contact">
+                    <p class="contact-list-contact-name">Erik Schmith</p>
+                    <p class="contact-list-contact-email">erisch@mail.de</p>
+                </div>
+            </div>
+        </div>
+        <div class="popup">
+            <div class="add-contact-window">
+                <div class="content-head">
+                    <div class="content-head-header">
+                        <img class="content-head-header-close" src="./assets/img/icons/Close.png" alt="close-button">
+                    </div>
+                    <div class="center">
+                        <h2 class="content-title">Add contact</h2>
+                        <p class="content-subtitle">Tasks are better with a team!</p>
+                        <div class="devider"></div>
+                        <div class="contact-placeholder">
+                            <img class="contact-placeholder-icon" src="./assets/img/icons/contact_placeholder.png">
+                        </div>    
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <input class="contact-input-field" type="name" placeholder="Name">
+                    <input class="contact-input-field" type="email" placeholder="Email">
+                    <input class="contact-input-field" type="phone" placeholder="Phone">
+                    <button class="add-contact-btn" id="add-contact-btn">Create contact <img class="add-contact-btn-icon" src="./assets/img/icons/check-contactbtn.png"></button>
+                </div>
+
+            </div>
+        </div>
+        
         
 
 
-
+    <button class="contact-add-btn"><img class="contact-add-btn-icon" src="./assets/img/icons/person_add.png"></button>
     </div>
 
     <script src="./scripts/include.js"></script>
