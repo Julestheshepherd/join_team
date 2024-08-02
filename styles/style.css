@@ -65,18 +65,19 @@ h6{
 }
 
 /* ---------- Mobil Header ---------- */
-.content{
-    z-index: 100;
-}
+
 
 .mobil-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 0px 20px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
     background-color: white;
 }
 .mobil-header-user-icon{
@@ -210,7 +211,7 @@ h6{
 
 footer{
     display: flex;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
@@ -250,7 +251,8 @@ nav{
 }
 .content{
     padding: 0 16px;
-    overflow: scroll;
+    z-index: 100;
+    margin-bottom: 80px;
 }
 .content h2{
     font-size: 47px;
@@ -265,12 +267,12 @@ nav{
     color: #000000;
     margin-bottom: 10px;
 }
-/* .content p{
+.content p{
     font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
     margin: 0;
-} */
+}
  .greeting-container{
     display: flex;
     justify-content: center;
