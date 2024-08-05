@@ -47,6 +47,7 @@ function writeContact() {
     addPhone.value = '';
 
     closeContactForm();
+    succecfullAnim()
     getContacts();
 }
 
@@ -145,6 +146,10 @@ function openContactForm() {
 
 function closeContactForm() {
     document.getElementById('modal-add').classList.add("d-none");
+}
+
+function succecfullAnim() {
+    document.getElementById('modal-succesfull"').classList.remove('d-none')
 }
 
 addNewContactBtn.addEventListener('click', writeContact);

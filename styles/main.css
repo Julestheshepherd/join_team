@@ -85,7 +85,7 @@ h6{
     right: 0;
     height: 80px;
     background-color: white;
-    
+    z-index: 800;
 }
 .mobil-header-user-icon{
     display: flex;
@@ -223,6 +223,7 @@ footer{
     right: 0;
     height: 80px;
     background-color: var(--dark);
+    z-index: 800;
 }
 nav{
     display: flex;

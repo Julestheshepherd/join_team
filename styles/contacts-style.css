@@ -4,10 +4,14 @@
     margin-bottom: 80px;
     height: 80vh;
     overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .contact-list{
     gap: 8px;
     border: 0;
+    width: 100%;
 }
 .contact-list-letter-item{
     border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -184,7 +188,7 @@
 .contact-input-field:focus{
     border: 1px solid var(--akzent);
 }
-.add-contact-btn{
+.add-new-contact-btn{
     margin: 16px;
     display: flex;
     justify-content: center;
@@ -198,7 +202,7 @@
     padding: 10px 10px;
     gap: 4px;
 }
-.add-contact-btn-icon{
+.add-new-contact-btn-icon{
     height: 24px;
 }
 
@@ -208,11 +212,12 @@
     position: fixed;
     z-index: 1;
     left: 0;
-    top: 87px;
+    top: 80px;
     bottom: 85px;
     right: 0;
     background-color: rgb(247, 247, 247);
     padding: 16px;
+    z-index: 600;
 }
 
 .modal-content {
@@ -310,8 +315,43 @@
     cursor: pointer;
 }
 
+.modal-succesfull{
+    height: 74px;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2A3647;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 220px;
+    animation: slideInButtom 0.5s ease 0s 1 normal forwards;
+}
+.modal-succesfull-text{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: white;
+}
+
 
 
 .d-none {
     display: none;
+}
+
+
+
+
+@keyframes slideInButtom {
+	0% {
+		opacity: 0;
+		transform: translateY(250px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
