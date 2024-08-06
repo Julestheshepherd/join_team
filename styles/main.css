@@ -79,7 +79,7 @@ h6{
     justify-content: space-between;
     padding: 0px 20px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;

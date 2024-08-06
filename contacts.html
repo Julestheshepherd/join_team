@@ -17,28 +17,20 @@
 
     <div class="content">
         <div class="contact-list" id="contact-list">
-            <!-- <div class="contact-list-letter-item">
-                <p class="contact-list-letter">A</p>
-            </div>
-            <div class="contact-list-item">
-                <div class="contact-list-initials">
-                    AM
-                </div>
-                <div class="contact-list-contact">
-                    <p class="contact-list-contact-name">Anton Mayer</p>
-                    <p class="contact-list-contact-email">antonm@mail.de</p>
-                </div>
-            </div> --> 
+            <!-- Data load from Database -->
         </div>
+        <button class="contact-menu-btn" id="add-contact-btn"><img class="contact-menu-btn-icon" src="./assets/img/icons/person_add.png"></button>
+    </div>
 
-        <!-- Add Contact  Modal -->
-        <div class="modal-add d-none" id="modal-add">
+    <div class="modals">
+          <!-- Add Contact  Modal -->
+          <div class="modal-add d-none" id="modal-add">
             <div class="add-contact-window">
                 <div class="content-head">
                     <div class="content-head-header">
                         <img class="content-head-header-close" id="content-head-header-close" src="./assets/img/icons/Close.png" alt="close-button">
                     </div>
-                    <div class="center">
+                    <div class="content-head-container">
                         <h2 class="content-title">Add contact</h2>
                         <p class="content-subtitle">Tasks are better with a team!</p>
                         <div class="devider"></div>
@@ -52,42 +44,47 @@
                     <input class="contact-input-field" id="new_name" type="name" placeholder="Name">
                     <input class="contact-input-field" id="new_email" type="email" placeholder="Email">
                     <input class="contact-input-field" id="new_phone" type="phone" placeholder="Phone">
-                    <button class="add-new-contact-btn" id="add-new-contact-btn">Create contact <img class="add-new-contact-btn-icon" src="./assets/img/icons/check-contactbtn.png"></button>
+                    <button class="contact-modal-btn" id="add-new-contact-btn">Create contact <img class="contact-modal-btn-icon" src="./assets/img/icons/check-contactbtn.png"></button>
                 </div>
             </div>
         </div>
-        
-        <!-- Contact Detail Modal -->
-        <div id="contact-detail-modal" class="modal d-none">
-            <div class="modal-header">
-                <div class="modal-header-close">
-                    <img class="modal-header-close-icon" id="close-detail-modal" src="./assets/img/icons/arrow-left-line.png" alt="Close Button">
-                </div>
-                <h2 class="modal-title">Contacts</h2>
-                <p class="modal-subtitle">Better with a team</p>
-                <div class="devider"></div>    
-            </div>
-            <div class="modal-content">
-                <div class="contact-modal-name-container">
-                    <div class="initials-container">XX</div>
-                    <p class="contact-modal-name" id="contact-name"></p>    
+
+         <!-- Edit Contact  Modal -->
+         <div class="modal-add d-none" id="modal-edit">
+            <div class="add-contact-window">
+                <div class="content-head">
+                    <div class="content-head-header">
+                        <img class="content-head-header-close" id="contact-edit-close" src="./assets/img/icons/Close.png" alt="close-button">
+                    </div>
+                    <div class="">
+                        <h2 class="content-title">Edit contact</h2>
+                        <div class="devider"></div>
+                        <div class="contact-placeholder-initials">
+                            <p class="contact-placeholder-initials-text" id="contact-placeholder-initials">MM</p>
+                        </div>    
+                    </div>
                 </div>
 
-                <p class="contact-modal-subtitle">Contact Information</p>
-                <p class="contact-category">Email</p>
-                <p class="contact-email" id="contact-email"></p>
-                <p class="contact-category">Phone</p>
-                <p class="contact-phone" id="contact-phone"></p>
-                <button class="contact-add-btn" id=""><img class="contact-add-btn-icon" src="./assets/img/icons/Menu Contact options.png"></button>
+                <div class="contact-form">
+                    <input class="contact-input-field" id="edit_name" type="name" placeholder="Name">
+                    <input class="contact-input-field" id="edit_email" type="email" placeholder="Email">
+                    <input class="contact-input-field" id="edit_phone" type="phone" placeholder="Phone">
+                    <div class="modal-btn-container">
+                        <button class="contact-modal-btn-alt" id="delete-edit-contact-btn">Delete</button>    
+                        <button class="contact-modal-btn" id="save-edit-contact-btn">Save <img class="add-new-contact-btn-icon" src="./assets/img/icons/check-contactbtn.png"></button>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
+         </div>
 
+        <!-- add contact succesfully Modal -->
         <div class="modal-succesfull d-none" id="modal-succesfull">
             <p class="modal-succesfull-text">Contact successfully created</p>
         </div>
        
-        <button class="contact-add-btn" id="add-contact-btn"><img class="contact-add-btn-icon" src="./assets/img/icons/person_add.png"></button>
     </div>
+
 
     <script src="./scripts/include.js"></script>
     <script src="./scripts/navigation.js"></script>
