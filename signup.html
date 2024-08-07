@@ -25,18 +25,17 @@
                 <div class="w-25"></div>
             </div>
             <form onsubmit="none">
-                <input class="login-input-field" type="text" placeholder="Name">
-                <input class="login-input-field" type="email" placeholder="Email">
-                <input class="login-input-field" type="password" placeholder="Password">
-                <input class="login-input-field" type="password" placeholder="Confirm Password">
+                <input class="login-input-field" id="signup-name" type="text" placeholder="Name">
+                <input class="login-input-field" id="signup-email" type="email" placeholder="Email">
+                <input class="login-input-field" id="signup-password" type="password" placeholder="Password">
+                <input class="login-input-field" id="signup-confirm" type="password" placeholder="Confirm Password">
                 <div class="login-window-checkbox">
                     <input type="checkbox" id="login-checkbox">
                     <label for="login-checkbox">I accept the <a href="./privacypolicy.html">Privacy Policy</a></label>
                 </div>
                 <div class="login-form-button-container">
-                    <button class="login-form-button">Sign up</button>  
+                    <button type="button" class="login-form-button" id="login-form-button" >Sign up</button>  
                 </div>
-                
             </form>
         </div>
 
@@ -52,5 +51,7 @@
     
 
     <script src="./scripts/navigation.js"></script>
+    <script src="./scripts/formvalidation.js"></script>
+    <script type="module" src="./scripts/signup.js"></script>
 </body>
 </html>
