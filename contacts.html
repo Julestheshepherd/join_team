@@ -11,15 +11,23 @@
     <title>contacts</title>
 </head>
 <body>
-    <div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="footer.html"></div>
 
+
+    <div class="main-div" id="main-div">
+        <!-- HEADER -->
+        <div w3-include-html="header.html" class="include-div"></div>
+
+        <!-- Content -->
     <div class="content">
         <div class="contact-list" id="contact-list">
             <!-- Data load from Database -->
         </div>
         <button class="contact-menu-btn" id="add-contact-btn"><img class="contact-menu-btn-icon" src="./assets/img/icons/person_add.png"></button>
+
+        <div class="contact-details" id="contact-details"></div>
+
     </div>
 
     <div class="modals">
@@ -48,7 +56,7 @@
                 </div>
             </div>
         </div>
-
+</div>
          <!-- Edit Contact  Modal -->
          <div class="modal-add d-none" id="modal-edit">
             <div class="add-contact-window">
