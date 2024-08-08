@@ -60,8 +60,10 @@ async function getContacts() {
         const snapshot = await get(dbRef);
         if (snapshot.exists()) {
             const contacts = snapshot.val();
+            const contactDetails = document.getElementById("contact-details");
             const contactDiv = document.getElementById("contact-list");
             contactDiv.innerHTML = "";
+            contactDetails.innerHTML = "";
 
             // Convert Contacts object to an array
             const contactArray = Object.keys(contacts).map(id => {
@@ -124,8 +126,10 @@ async function openContactDetail(contactId) {
         const snapshot = await get(dbRef);
         if (snapshot.exists()) {
             const contacts = snapshot.val();
-            const contactDiv = document.getElementById("contact-list");
+            const contactDiv = document.getElementById("contact-details");
+            const contactlist = document.getElementById("contact-list");
             contactDiv.innerHTML = "";
+            contactlist.innerHTML ="";
 
             // Convert Contacts object to an array
             const contactArray = Object.keys(contacts).map(id => {
