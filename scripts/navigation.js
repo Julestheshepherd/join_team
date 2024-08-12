@@ -1,7 +1,7 @@
 let submenuStatus = false;
 
 function initializeSubmenu() {
-    let submenuBtn = document.getElementById('user-icon-button-mobile');
+    let submenuBtn = document.getElementById('user-icon-button');
     let submenu = document.getElementById('header-submenu');
 
     if (submenuBtn && submenu) {

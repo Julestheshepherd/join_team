@@ -80,7 +80,7 @@ h6{
     height: 80px;
     background-color: white;
 }
-.mobil-header-user-icon{
+.header-user-icon{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -92,10 +92,10 @@ h6{
     font-size: 14px;
     font-weight: 700;
 }
-.mobil-header-user-icon:hover{
+.header-user-icon:hover{
     cursor: pointer;
 }
-.mobil-header-submenu{
+.header-submenu{
     background-color: var(--activeDark);
     border: 0;
     border-radius: 20px 0 20px 20px;
@@ -119,7 +119,7 @@ h6{
     animation: slide-right 0.2s ease 1 normal forwards;
 }
 
-.mobil-header-submenu-button{
+.header-submenu-button{
     width: 100%;
     padding: 8px 16px;
     background-color: transparent;
@@ -129,7 +129,7 @@ h6{
     line-height: 19.2px;
     color: #CDCDCD;
 }
-.mobil-header-submenu-button:hover{
+.header-submenu-button:hover{
     background-color: rgb(51, 63, 89);
 }
 .sidebar{
@@ -209,7 +209,7 @@ h6{
 
 
 
-footer{
+.mobil-menu{
     display: flex;
     position: fixed;
     bottom: 0;
@@ -365,15 +365,29 @@ nav{
 
 
 @media(min-width: 700px){
-    footer{
-        display: none;
-    }
+
     .content{
         margin-left: 232px;
         padding: 64px;
         overflow: hidden;
     }
+    .mobil-menu{
+        display: none;
+    }
+
     .mobil-header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        background-color: white;
+        height: 96px;
+        margin-left: 232px;
+    }
+    .mobil-header-logo{
         display: none;
     }
 
@@ -383,7 +397,7 @@ nav{
     .sidebar{
         display: none;
     }
-    .desktop-header{
+    .desktop-header-title{
         display: none;
     }
 }
