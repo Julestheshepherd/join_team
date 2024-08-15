@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getDatabase, ref, push, get } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+import { getDatabase, ref, push, get, remove } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,8 +18,8 @@ let addContactBtn = document.getElementById('add-contact-btn');
 let closeContactFormBtn = document.getElementById('content-head-header-close');
 let closeDetailModalBtn = document.getElementById('close-detail-modal');
 let closeEditModalBtn = document.getElementById('contact-edit-close');
-let contactDetailsOptionsBtn = document.getElementById('mobil-contact-menu');
 let contactOptionEditBtn = document.getElementById('option-edit-contact');
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -139,14 +139,16 @@ async function openContactDetail(contactId) {
                 const initialsColor = getRandomColor();
                 const contactHTML = /* HTML */ `
                     
-                    <div id="contact-details" class="contact-details">
-                    <div class="contact-details-header">
+                    
+                    <div class="contact-details-header-container">
+                        <div class="contact-details-header">
+                            <h2 class="contact-details-header-title">Contacts</h2>
+                            <p class="contact-details-header-subtitle">Better with a team</p>
+                            <div class="devider"></div>     
+                        </div>  
                         <div class="contact-details-close">
                             <img class="contact-details-close-icon" id="close-detail-modal" src="./assets/img/icons/arrow-left-line.png" alt="Close Button">
                         </div>
-                        <h2 class="contact-details-header-title">Contacts</h2>
-                        <p class="contact-details-header-subtitle">Better with a team</p>
-                        <div class="devider"></div>    
                     </div>
                     
                     <div class="contact-details-content">
@@ -162,23 +164,37 @@ async function openContactDetail(contactId) {
                         <p class="contact-phone" id="contact-phone">${contacts.phone}</p>
                         
                     </div>
-                    <button class="contact-menu-btn" id="mobil-contact-menu"><img class="contact-menu-btn-icon" src="./assets/img/icons/menu_contact-options.png"></button>
+                    <button class="contact-menu-btn" id="mobil-contact-options"><img class="contact-menu-btn-icon" src="./assets/img/icons/menu_contact-options.png"></button>
 
                     <div class="contact-details-options d-none" id="contact-details-options">
                         <button class="option-btn" id="option-edit-contact"><img class="option-btn-icon" src="./assets/img/icons/edit.png">Edit</button>
                         <button class="option-btn" id="option-delete-contact"><img class="option-btn-icon" src="./assets/img/icons/delete.png">Delete</button>
                     </div>
 
-                </div>
+           
                               
                 `;
                 contactDiv.innerHTML += contactHTML;
 
-                 // Add event listeners to contact items
                 document.getElementById('close-detail-modal').addEventListener('click', () => {
                     getContacts(); 
                 });
-               
+
+                const contactDetailsOptionsBtn = document.getElementById('mobil-contact-options');
+                if (contactDetailsOptionsBtn) {
+                    contactDetailsOptionsBtn.addEventListener('click', () => {
+                        document.getElementById('contact-details-options').classList.toggle('d-none');
+                    });
+                }
+
+                const deleteBtn = document.getElementById('option-delete-contact');
+                if (deleteBtn) {
+                    deleteBtn.addEventListener('click', () => {
+                        if (confirm("Are you sure you want to delete this contact?")) {
+                            deleteContact(contactId);
+                        }
+                    });
+                }
 
         } else {
             alert("No contacts found.");
@@ -190,6 +206,17 @@ async function openContactDetail(contactId) {
 }
 
 
+async function deleteContact(contactId) {
+    const dbRef = ref(db, `contacts/${contactId}`);
+    try {
+        await remove(dbRef);
+        alert("Contact deleted successfully.");
+        getContacts(); 
+    } catch (error) {
+        alert("Error deleting contact: " + error);
+        console.log("Error deleting contact: " + error);
+    }
+}
 
 
 function openContactForm() {
@@ -217,11 +244,6 @@ function succecfullAnim() {
     setTimeout(() => {
         document.getElementById('modal-succesfull').classList.add('d-none');
       }, "2000");
-}
-
-
-function openContactDetailsOptions(){
-    document. getElementById('contact-details-options').classList.toggle('d-none');
 }
 
 

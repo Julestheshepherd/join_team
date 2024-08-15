@@ -3,21 +3,22 @@
 }
 
 .content {
- padding: 0 32px;
-  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   height: auto;
   height: calc(100% - 96px);
-  width: 456px;
   overflow-y: auto;
   position: fixed;
+  width: calc(100% - 64px);
+  padding-left: 32px;
+  padding-right: 32px;
 }
 .contact-list {
   gap: 8px;
   border: 0;
   width: 100%;
+  margin-top: 80px;
 }
 .contact-list-letter-item {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
@@ -86,19 +87,23 @@
 }
 
 .contact-details {
-  margin-top: 32px;
+  margin-top: 16px;
+  width: 100%;
 }
-.contact-details-header {
+.contact-details-header-container{
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
 }
 .contact-details-close {
   display: flex;
-  justify-content: end;
 }
 .contact-details-close-icon {
   height: 32px;
+}
+.contact-details-header{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 .contact-details-header-title {
   font-size: 47px;
