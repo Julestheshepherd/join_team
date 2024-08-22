@@ -1,0 +1,50 @@
+.content {
+    height: auto;
+    height: calc(100% - 96px);
+    overflow-y: auto;
+    width: calc(100% - 280px);
+    margin-left: 255px;
+  }
+
+.board {
+    display: flex;
+    justify-content: space-around;
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+.column {
+    width: 25%;
+    padding: 10px;
+    background-color: #f7f7f7;
+    border-radius: 10px;
+}
+
+.column h2 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+
+}
+
+.draggable {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: move;
+}
+
+.draggable.dragging {
+    opacity: 0.5;
+}
+
+.placeholder {
+    background-color: #f7f7f7;
+    border: 2px dashed #ccc;
+    margin: 10px 0;
+    height: 50px;
+    border-radius: 5px;
+}

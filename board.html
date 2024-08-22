@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./styles/main.css">
-    <link rel="stylesheet" href="./styles/summary-style.css">
+    <link rel="stylesheet" href="./styles/board-style.css">
     <link rel="stylesheet" href="./styles/fonts.css">
 
-    <title>Summary</title>
+    <title>Board</title>
 </head>
 <body>
     <div w3-include-html="header.html"></div>
@@ -17,13 +17,34 @@
 
     <div class="content">
   
-        
+        <div class="board">
+            <div class="column">
+                <h2>To Do</h2>
+                <div class="draggable" draggable="true">Task 1</div>
+                <div class="draggable" draggable="true">Task 2</div>
+            </div>
+            <div class="column">
+                <h2>In Progress</h2>
+                <div class="draggable" draggable="true">Task 3</div>
+                <div class="draggable" draggable="true">Task 4</div>
+            </div>
+            <div class="column">
+                <h2>Await feedback</h2>
+                <div class="draggable" draggable="true">Task 3</div>
+                <div class="draggable" draggable="true">Task 4</div>
+            </div>
+            <div class="column">
+                <h2>Done</h2>
+                <div class="draggable" draggable="true">Task 5</div>
+            </div>
+        </div>
 
 
 
     </div>
 
     <script src="./scripts/include.js"></script>
+    <script src="./scripts/dragndrop.js"></script>
     <script src="./scripts/navigation.js"></script>
     <script type="module" src="./scripts/firebase-init.js"></script>
     <script type="module" src="./scripts/logout.js"></script>
