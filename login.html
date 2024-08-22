@@ -27,13 +27,17 @@
             <form onsubmit="none">
                 <input class="login-input-field" id="login-email" type="email" placeholder="Email">
                 <input class="login-input-field" id="login-password" type="password" placeholder="Password">
+
+                <!-- Fehlermeldung für das Login -->
+                <div id="login-error" style="color: red; display: none;"></div>
+
                 <div class="login-window-checkbox">
                     <input type="checkbox" id="login-checkbox">
                     <label for="login-checkbox">Remember me</label>
                 </div>
                 <div class="login-form-button-container">
                     <button class="login-form-button" id="login-form-button">Log in</button>
-                    <button class="login-form-button">Guest Log in</button>   
+                    <button class="login-form-button" id="guest-login-button">Guest Log in</button>   
                 </div>
                 
             </form>
@@ -50,11 +54,8 @@
 
     </div>
 
- 
-            
-    
-
     <script src="./scripts/navigation.js"></script>
-    <script type="module" src="./scripts/login.js"></script>
+    <script src="./scripts/formvalidation.js"></script>
+    <script type="module" src="./scripts/auth.js"></script>
 </body>
 </html>

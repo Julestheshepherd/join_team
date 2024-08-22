@@ -24,17 +24,21 @@
                 </div>
                 <div class="w-25"></div>
             </div>
-            <form onsubmit="none">
+            <form onsubmit="none" id="signup-form">
                 <input class="login-input-field" id="signup-name" type="text" placeholder="Name">
                 <input class="login-input-field" id="signup-email" type="email" placeholder="Email">
                 <input class="login-input-field" id="signup-password" type="password" placeholder="Password">
                 <input class="login-input-field" id="signup-confirm" type="password" placeholder="Confirm Password">
+
+                <!-- Fehlermeldung für die Registrierung -->
+                <div id="signup-error" style="color: red; display: none;"></div>
+
                 <div class="login-window-checkbox">
                     <input type="checkbox" id="login-checkbox">
                     <label for="login-checkbox">I accept the <a href="./privacypolicy.html">Privacy Policy</a></label>
                 </div>
                 <div class="login-form-button-container">
-                    <button type="button" class="login-form-button" id="login-form-button" >Sign up</button>  
+                    <button type="button" class="login-form-button" id="signup-form-button" >Sign up</button>  
                 </div>
             </form>
         </div>
@@ -46,12 +50,8 @@
 
     </div>
 
- 
-            
-    
-
     <script src="./scripts/navigation.js"></script>
     <script src="./scripts/formvalidation.js"></script>
-    <script type="module" src="./scripts/signup.js"></script>
+    <script type="module" src="./scripts/auth.js"></script>
 </body>
 </html>
