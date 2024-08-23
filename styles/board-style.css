@@ -47,7 +47,17 @@
     border: 2px dashed #ccc;
     margin: 10px 0;
     height: 50px;
-    border-radius: 5px;
+    border-radius: 10px;
+}
+.no-task {
+    background-color: #f7f7f7;
+    color: #999;
+    text-align: center;
+    padding: 10px;
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+    font-style: italic;
 }
 
 

@@ -1,10 +1,10 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const draggables = document.querySelectorAll('.draggable');
     const columns = document.querySelectorAll('.column');
 
     let draggingElement = null;
+    let placeholder = document.createElement('div');
+    placeholder.classList.add('placeholder');
 
     draggables.forEach(draggable => {
         draggable.addEventListener('dragstart', (e) => {
@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const placeholders = document.querySelectorAll('.placeholder');
             placeholders.forEach(placeholder => placeholder.remove());
+
+            // Überprüfe nach dem Ziehen, ob eine Spalte leer ist
+            updateNoTaskPlaceholders();
         });
     });
 
@@ -29,9 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
         column.addEventListener('dragover', (e) => {
             e.preventDefault();
             const afterElement = getDragAfterElement(column, e.clientY);
-            const dragging = document.querySelector('.dragging');
-            const placeholder = document.createElement('div');
-            placeholder.classList.add('placeholder');
 
             if (afterElement == null) {
                 column.appendChild(placeholder);
@@ -43,8 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
         column.addEventListener('drop', (e) => {
             e.preventDefault();
             const afterElement = getDragAfterElement(column, e.clientY);
-            const dragging = document.querySelector('.dragging');
-            const placeholder = document.querySelector('.placeholder');
 
             if (afterElement == null) {
                 column.appendChild(draggingElement);
@@ -52,9 +50,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 column.insertBefore(draggingElement, afterElement);
             }
 
-            placeholder.remove();
+            placeholder.remove(); // Entferne den Platzhalter nach dem Loslassen
         });
     });
+
+    // Überprüfe, ob eine Spalte leer ist und zeige den "No Task"-Platzhalter an, falls ja
+    function updateNoTaskPlaceholders() {
+        columns.forEach(column => {
+            const hasTasks = column.querySelector('.draggable');
+            const noTaskPlaceholder = column.querySelector('.no-task');
+
+            if (!hasTasks) {
+                noTaskPlaceholder.style.display = 'block';
+            } else {
+                noTaskPlaceholder.style.display = 'none';
+            }
+        });
+    }
+
+    // Initiale Überprüfung bei Laden der Seite
+    updateNoTaskPlaceholders();
 
     function getDragAfterElement(container, y) {
         const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
