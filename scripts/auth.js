@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     alert('Erfolgreich eingeloggt!');
-                    window.location.href = 'index.html'; // Weiterleitung nach dem Login
+                    window.location.href = 'summary.html'; // Weiterleitung nach dem Login
                 })
                 .catch((error) => {
                     alert('Fehler beim Einloggen: ' + error.message);
@@ -48,41 +48,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Signup-Funktion
-    const signupBtn = document.getElementById('signup-form-button');
-    if (signupBtn) {
-        signupBtn.addEventListener('click', (e) => {
-            e.preventDefault();
+// Signup-Funktion
+const signupBtn = document.getElementById('signup-form-button');
+if (signupBtn) {
+    signupBtn.addEventListener('click', (e) => {
+        e.preventDefault();
 
-            const name = document.getElementById('signup-name').value.trim();
-            const email = document.getElementById('signup-email').value.trim();
-            const password = document.getElementById('signup-password').value.trim();
-            const confirmPassword = document.getElementById('signup-confirm').value.trim();
+        const name = document.getElementById('signup-name').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value.trim();
+        const confirmPassword = document.getElementById('signup-confirm').value.trim();
 
-            if (password !== confirmPassword) {
-                alert('Die Passwörter stimmen nicht überein.');
-                return;
-            }
+        if (password !== confirmPassword) {
+            alert('Die Passwörter stimmen nicht überein.');
+            return;
+        }
 
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-
-                    // Benutzerinformationen in der Realtime Database speichern
-                    set(ref(database, 'users/' + user.uid), {
-                        name: name,
-                        email: email,
-                        signup_date: new Date().toISOString(),
-                    });
-
-                    alert('Registrierung erfolgreich!');
-                    window.location.href = 'index.html'; // Weiterleitung nach der Registrierung
-                })
-                .catch((error) => {
-                    alert('Fehler bei der Registrierung: ' + error.message);
-                });
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+    
+            // Benutzerinformationen in der Realtime Database speichern
+            set(ref(database, 'users/' + user.uid), {
+                uid: user.uid,  // Benutzer-ID hinzufügen
+                name: name,
+                email: email,
+                signup_date: new Date().toISOString(),
+            })
+            .then(() => {
+                alert('Benutzerdaten erfolgreich gespeichert!');
+                window.location.href = 'summary.html'; // Weiterleitung nach der Registrierung
+            })
+            .catch((error) => {
+                console.error('Fehler beim Speichern der Benutzerdaten:', error);
+                alert('Fehler beim Speichern der Benutzerdaten: ' + error.message);
+            });
+        })
+        .catch((error) => {
+            console.error('Fehler bei der Registrierung:', error);
+            alert('Fehler bei der Registrierung: ' + error.message);
         });
-    }
+    });
+}
 
     // Guest Login-Funktion
     const guestLoginBtn = document.getElementById('guest-login-button'); // Wähle den Guest-Login-Button

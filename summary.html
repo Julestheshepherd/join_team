@@ -16,88 +16,86 @@
     <div w3-include-html="mobil-menu.html"></div>
 
     <div class="content">
-        <div class="content-head">
-            <h2 class="content-title">JOIN 360</h2>
-            <p class="content-subtitle">Key Metrics at a Glance</p>
-            <div class="devider"></div>
-        </div>
-
-        <div class="summary-content">
-            <div class="summary-left">
-                <div class="summary-left-row">
-                    <div class="summary-button-l">
-                        <img class="summary-button-icon" src="./assets/img/icons/pencil.png">
-                        <div class="summary-button-data">
-                            <p class="summary-button-number">1</p>
-                            <p class="summary-button-subtitle">To-do</p>    
-                        </div>
-                        
-                    </div>
-                    <div class="summary-button-l">
-                        <img class="summary-button-icon" src="./assets/img/icons/check.png">
-                        <div class="summary-button-data">
-                            <p class="summary-button-number">1</p>
-                            <p class="summary-button-subtitle">Done</p>
-                        </div>
-                    </div>    
-                </div>
-                <div class="summary-left-row">
-                    <div class="summary-button-xl">
-                        <div class="summary-button-big-left">
-                            <img class="summary-button-icon" src="./assets/img/icons/urgent.png">
+        <div class="left-container">
+            <div class="content-head">
+                <h2 class="content-title">JOIN 360</h2>
+                <p class="content-subtitle">Key Metrics at a Glance</p>
+                <div class="devider"></div>
+            </div>
+    
+            <div class="summary-content">
+                <div class="summary-left">
+                    <div class="summary-left-row">
+                        <div class="summary-button-l">
+                            <img class="summary-button-icon" src="./assets/img/icons/pencil.png">
                             <div class="summary-button-data">
                                 <p class="summary-button-number">1</p>
-                                <p class="summary-button-subtitle">Urgent</p>    
-                            </div>    
+                                <p class="summary-button-subtitle">To-do</p>    
+                            </div>
                         </div>
-                        
-                        
-                        <div class="summary-button-devider"></div>
-                        
-                        <div class="summary-button-big-right">
-                            <p class="summary-button-big-date">October 6, 2024</p>
-                            <p class="summary-button-subtitle">Upcomming Deadline</p>
-                        </div>
+                        <div class="summary-button-l">
+                            <img class="summary-button-icon" src="./assets/img/icons/check.png">
+                            <div class="summary-button-data">
+                                <p class="summary-button-number">1</p>
+                                <p class="summary-button-subtitle">Done</p>
+                            </div>
+                        </div>    
                     </div>
-                </div> 
-                <div class="summary-left-row">
-                    <div class="summary-button-s">
-                        <div class="summary-button-data">
-                            <p class="summary-button-number">1</p>
-                            <p class="summary-button-subtitle">Tasks in Board</p>    
+                    <div class="summary-left-row">
+                        <div class="summary-button-xl">
+                            <div class="summary-button-big-left">
+                                <img class="summary-button-icon" src="./assets/img/icons/urgent.png">
+                                <div class="summary-button-data">
+                                    <p class="summary-button-number">1</p>
+                                    <p class="summary-button-subtitle">Urgent</p>    
+                                </div>    
+                            </div>
+                            
+                            
+                            <div class="summary-button-devider"></div>
+                            
+                            <div class="summary-button-big-right">
+                                <p class="summary-button-big-date">October 6, 2024</p>
+                                <p class="summary-button-subtitle">Upcomming Deadline</p>
+                            </div>
                         </div>
-                        
-                    </div>
-                    <div class="summary-button-s">
-                        <div class="summary-button-data">
-                            <p class="summary-button-number">1</p>
-                            <p class="summary-button-subtitle">Tasks in Progress</p>
+                    </div> 
+                    <div class="summary-left-row">
+                        <div class="summary-button-s">
+                            <div class="summary-button-data">
+                                <p class="summary-button-number">1</p>
+                                <p class="summary-button-subtitle">Tasks in Board</p>    
+                            </div>
+                            
                         </div>
-                    </div>   
-                    <div class="summary-button-s">
-                        <div class="summary-button-data">
-                            <p class="summary-button-number">1</p>
-                            <p class="summary-button-subtitle">Awaiting Feedback</p>
-                        </div>
-                    </div>  
-                </div>     
+                        <div class="summary-button-s">
+                            <div class="summary-button-data">
+                                <p class="summary-button-number">1</p>
+                                <p class="summary-button-subtitle">Tasks in Progress</p>
+                            </div>
+                        </div>   
+                        <div class="summary-button-s">
+                            <div class="summary-button-data">
+                                <p class="summary-button-number">1</p>
+                                <p class="summary-button-subtitle">Awaiting Feedback</p>
+                            </div>
+                        </div>  
+                    </div>     
+                </div>  
             </div>
-
-
-            <div class="summary-right d-none">
-                <p class="summary-right-greeting">Good Morning</p>
-                <p class="summary-right-name">Max Mustermann</p>
-            </div>    
         </div>
-        
 
-
-
+        <div class="right-container">
+            <p class="greeting" id="greeting"></p>
+            <p class="greeting-name" id="greeting-name"></p>
+        </div>
     </div>
+
 
     <script src="./scripts/include.js"></script>
     <script src="./scripts/navigation.js"></script>
     <script type="module" src="./scripts/firebase-init.js"></script>
+    <script type="module" src="./scripts/user.js"></script>
     <script type="module" src="./scripts/logout.js"></script>
 </body>
 </html>

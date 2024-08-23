@@ -8,103 +8,117 @@
     <link rel="stylesheet" href="./styles/addTask.css">
     <link rel="stylesheet" href="./styles/fonts.css">
 
-    <title>Summary</title>
+    <title>Add Task</title>
 </head>
 <body>
     <div w3-include-html="header.html"></div>
     <div w3-include-html="sidebar.html"></div>
     <div w3-include-html="mobil-menu.html"></div>
+
 <main class="main-div" id="main-div">
     <div class="content">
-  <!-- CONTENT ANFANG -->
-  <div class="title-box">
-    <h1 class="title">Add Task</h1>
-</div>
-<div>
-    <div class="main-add-task-left">
-        <div class="add-task-input-group">
-            <label>Title<span class="star">*</span></label>
-            <input class="title-input" type="text" id="title" name="title" size="30" maxlength="70" placeholder="Enter the title">
+        <!-- CONTENT ANFANG -->
+        <div class="content-head">
+            <h2 class="content-title">JOIN 360</h2>
         </div>
+        <div class="add-task-container">
+            <div class="main-add-task-left">
+                <div class="add-task-input-group">
+                    <label>Title<span class="star">*</span></label>
+                    <input class="title-input" type="text" id="title" name="title" size="30" maxlength="70" placeholder="Enter the title">
+                </div>
 
-        <div class="add-task-input-group add-task-description">
-            <label class="add-task-subtitles">Description</label>
-            <div class="description-input-container">
-                <textarea class="description-input" id="description" name="description" rows="4" cols="53" placeholder="Enter a Description"></textarea>
+                <div class="add-task-input-group add-task-description">
+                    <label class="add-task-subtitles">Description</label>
+                    <div class="description-input-container">
+                        <textarea class="description-input" id="description" name="description" rows="4" cols="53" placeholder="Enter a Description"></textarea>
+                    </div>
+                </div>
+
+                <div class="add-task-input-group add-task-assigned">
+                    <div class="add-task-input-group add-task-assigned">
+                        <label class="add-task-subtitles">Assigned to</label>
+                        <div class="custom-dropdown">
+                            <button class="dropdown-btn" id="dropdownBtn">Select contacts to assign</button>
+                            <div class="dropdown-content" id="dropdownContent">
+                                <!-- Namen und Icons werden hier dynamisch eingefügt -->
+                            </div>
+                        </div>
+                        <div class="selected-contacts" id="selectedContacts">
+                            <!-- Ausgewählte Kontakte werden hier als Icons angezeigt -->
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="add-task-input-group add-task-assigned">
-            <label class="add-task-subtitles">Assigned to</label>
-            <select class="assigned-to" id="assignedTo" required>
-                <option selected value="Name">Select contacts to assign</option>
-                <option value="user1">User 1</option>
-                <option value="user2">User 2</option>
-                <option value="user3">User 3</option>
-            </select>
-        </div>
-    </div>
+            <div class="task-separator"></div>
 
-    <div class="task-separator"></div>
+            <div class="main-add-task-right">
+                <div class="add-task-input-group add-task-due">
+                    <label class="add-task-subtitles">Due date<span class="star">*</span></label>
+                    <input class="due-date" type="date" id="dueDate" name="dueDate">
+                </div>
 
-    <div class="main-add-task-right">
-        <div class="add-task-input-group add-task-due">
-            <label class="add-task-subtitles">Due date<span class="star">*</span></label>
-            <input class="due-date" type="date" id="dueDate" name="dueDate">
-        </div>
+                <div class="add-task-input-group add-task-prio">
+                    <label class="add-task-subtitles">Priorty</label>
+                    <div class="priority-buttons">
+                        <button class="priority-left" type="button">Urgent <img src="assets/img/icons/urgentsmall.png"></button>
+                        <button class="priority-middle" type="button">Medium <img src="assets/img/icons/mediumsmall.png"></button>
+                        <button class="priority-right" type="button">Low <img src="assets/img/icons/lowsmall.png"></button>
+                    </div>
+                </div>
 
-        <div class="add-task-input-group add-task-prio">
-            <label class="add-task-subtitles">Priorty</label>
-            <div class="priority-buttons">
-               <button class="priority-left" type="button">Urgent <img src="assets/img/icons/urgentsmall.png"></button>
-                <button class="priority-middle" type="button">Medium <img src="assets/img/icons/mediumsmall.png"></button>
-                <button class="priority-right" type="button">Low <img src="assets/img/icons/lowsmall.png"></button>
-            </div>
-        </div>
+                <div class="add-task-input-group add-task-category">
+                    <label class="add-task-subtitles">Category<span class="star">*</span></label>
+                    <div class="custom-dropdown">
+                        <button class="dropdown-btn" id="categoryDropdownBtn">Select task category</button>
+                        <div class="dropdown-content" id="categoryDropdownContent">
+                            <div class="dropdown-item" data-value="technicalTask">Technical Task</div>
+                            <div class="dropdown-item" data-value="userStory">User Story</div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="add-task-input-group add-task-category">
-            <label class="add-task-subtitles">Category<span class="star">*</span></label>
-            <select class="category-input" id="category" name="category" required>
-                <option value="category1">Select task category</option>
-                <option id="technicalTask" value="technicalTask">Technical Task</option>
-                <option id="userStory" value="userStory">User Story</option>
-            </select>
-        </div>
-
-        <div class="add-task-input-group add-task-subtask">
-            <label class="add-task-subtitles">Subtasks</label>
-            <div class="subtask-input">
-                <div class="subtask-field">
-                    <input class="subtask-input" type="text" id="subtask" name="subtask" placeholder="Add new Subtask">
-                    <img src="assets/img/add.png" alt="">
+                <div class="add-task-input-group add-task-subtask">
+                    <label class="add-task-subtitles">Subtasks</label>
+                    <div class="subtask-input">
+                        <div class="subtask-field">
+                            <input class="subtask-input" type="text" id="subtask" name="subtask" placeholder="Add new Subtask">
+                            <div id="subtask-icons-container" class="subtask-icons-container">
+                                <img src="assets/img/icons/plus.png" alt="Add Subtask" id="add-subtask-icon" class="icon">
+                                <img src="assets/img/icons/acept.png" alt="Confirm" id="confirm-subtask-icon" class="icon">
+                                <img src="assets/img/icons/chancel.png" alt="Cancel" id="cancel-subtask-icon" class="icon">
+                            </div>
+                        </div>
+                        <ul id="subtask-list" class="subtask-list"></ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="required-img">
+            <img src="assets/img/required.png" alt="">
+        </div>
+
+        <div class="add-task-footer-btn">
+            <button class="add-task-cancel-btn">
+                <span>Cancel</span>
+                <img src="assets/img/icons/Vector.png" alt="Cancel">
+            </button>
+            <button type="submit" class="add-task-create-btn">
+                <span>Create Task</span>
+                <img src="assets/img/icons/check_btn.png" alt="Create Task">
+            </button>
+        </div>
     </div>
-</div>
-<div class="required-img">
-    <img src="assets/img/required.png" alt="">
-</div>
-
-<div class="add-task-footer-btn">
-    <button class="add-task-cancel-btn">
-        <span>Cancel</span>
-        <img src="assets/img/Vector.png" alt="Cancel">
-    </button>
-    <button type="submit" class="add-task-create-btn">
-        <span>Create Task</span>
-        <img src="assets/img/check.png" alt="Create Task">
-    </button>
-</div>
-</div>
-
 
 <!-- CONTENT ENDE -->
-    </div>
 </main>
+    <script src="./scripts/addtask_script.js"></script>
     <script src="./scripts/include.js"></script>
     <script src="./scripts/navigation.js"></script>
     <script type="module" src="./scripts/firebase-init.js"></script>
+    <script type="module" src="./scripts/addtasks.js"></script>
+    <script type="module" src="./scripts/user.js"></script>
     <script type="module" src="./scripts/logout.js"></script>
 </body>
 </html>
