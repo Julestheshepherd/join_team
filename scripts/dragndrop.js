@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const draggables = document.querySelectorAll('.draggable');
     const columns = document.querySelectorAll('.column');
-
     let draggingElement = null;
     let placeholder = document.createElement('div');
     placeholder.classList.add('placeholder');
 
-    draggables.forEach(draggable => {
-        draggable.addEventListener('dragstart', (e) => {
+    document.addEventListener('dragstart', (e) => {
+        if (e.target.classList.contains('draggable')) {
             draggingElement = e.target;
             draggingElement.classList.add('dragging');
             setTimeout(() => {
                 draggingElement.style.display = 'none';
             }, 0);
-        });
+        }
+    });
 
-        draggable.addEventListener('dragend', (e) => {
+    document.addEventListener('dragend', (e) => {
+        if (draggingElement) {
             draggingElement.classList.remove('dragging');
             draggingElement.style.display = 'block';
             draggingElement = null;
@@ -25,14 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Überprüfe nach dem Ziehen, ob eine Spalte leer ist
             updateNoTaskPlaceholders();
-        });
+        }
     });
 
     columns.forEach(column => {
         column.addEventListener('dragover', (e) => {
             e.preventDefault();
             const afterElement = getDragAfterElement(column, e.clientY);
-
             if (afterElement == null) {
                 column.appendChild(placeholder);
             } else {
@@ -42,19 +41,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         column.addEventListener('drop', (e) => {
             e.preventDefault();
-            const afterElement = getDragAfterElement(column, e.clientY);
+            if (draggingElement) {
+                const afterElement = getDragAfterElement(column, e.clientY);
+                if (afterElement == null) {
+                    column.appendChild(draggingElement);
+                } else {
+                    column.insertBefore(draggingElement, afterElement);
+                }
 
-            if (afterElement == null) {
-                column.appendChild(draggingElement);
-            } else {
-                column.insertBefore(draggingElement, afterElement);
+                placeholder.remove(); // Entferne den Platzhalter nach dem Loslassen
+
+                // Aktualisiere den Task-Status in der Firebase-Datenbank
+                const taskId = draggingElement.getAttribute('data-task-id');
+                const newStatus = getStatusFromColumn(column);
+
+                if (taskId && newStatus) {
+                    const database = firebase.database();  // Verwendung der globalen Firebase-Instanz
+                    const taskRef = database.ref(`tasks/${taskId}`);
+                    taskRef.update({ status: newStatus })
+                        .then(() => {
+                            console.log(`Task ${taskId} status updated to ${newStatus}`);
+                        })
+                        .catch((error) => {
+                            console.error(`Error updating task ${taskId} status:`, error);
+                        });
+                }
             }
-
-            placeholder.remove(); // Entferne den Platzhalter nach dem Loslassen
         });
     });
 
-    // Überprüfe, ob eine Spalte leer ist und zeige den "No Task"-Platzhalter an, falls ja
     function updateNoTaskPlaceholders() {
         columns.forEach(column => {
             const hasTasks = column.querySelector('.draggable');
@@ -68,7 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initiale Überprüfung bei Laden der Seite
     updateNoTaskPlaceholders();
 
     function getDragAfterElement(container, y) {
@@ -84,5 +98,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 return closest;
             }
         }, { offset: Number.NEGATIVE_INFINITY }).element;
+    }
+
+    function getStatusFromColumn(column) {
+        const columnTitle = column.querySelector('h2').textContent.trim();
+        switch (columnTitle) {
+            case 'To Do':
+                return 'To Do';
+            case 'In Progress':
+                return 'In Progress';
+            case 'Await feedback':
+                return 'Await feedback';
+            case 'Done':
+                return 'Done';
+            default:
+                return null;
+        }
     }
 });

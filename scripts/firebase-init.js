@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/fireba
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import { getDatabase } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 
-// Your web app's Firebase configuration
+// Deine Firebase-Konfiguration
 const firebaseConfig = {
     apiKey: "AIzaSyDZgheu3b61xo6km1f3RDr_Fx04BwHxIS0",
     authDomain: "join-7694d.firebaseapp.com",
@@ -13,9 +13,10 @@ const firebaseConfig = {
     appId: "1:209652435521:web:b5d73edc8d0972a76d94c0"
 };
 
-// Initialize Firebase
+// Firebase initialisieren
 const app = initializeApp(firebaseConfig);
-const auth = getAuth();
+const auth = getAuth(app);
 const database = getDatabase(app);
 
+// Die Instanzen für den Import in anderen Modulen exportieren
 export { auth, database };

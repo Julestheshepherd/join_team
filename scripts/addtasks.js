@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Task-Objekt erstellen
+                // Task-Objekt erstellen und Status "To Do" setzen
                 const newTask = {
                     title,
                     description,
@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     priority: selectedPriority,
                     category,
                     subtasks,
+                    status: "To Do", // Standardstatus hinzufügen
                     createdAt: new Date().toISOString(),
                     userId: auth.currentUser ? auth.currentUser.uid : null
                 };
