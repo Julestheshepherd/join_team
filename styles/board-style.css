@@ -37,6 +37,9 @@
     box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
     gap: 10px;
 }
+.draggable:hover{
+    scale: 1.03;
+}
 
 .draggable.dragging {
     opacity: 0.5;
@@ -153,3 +156,110 @@
     align-items: center;
     justify-content: space-between;
 }
+
+
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 48px 40px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 30px;
+    box-shadow: 0 0 4px0 rgba(0, 0, 0, 0.16);
+    gap: 24px;
+}
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal-task-title{
+    font-size: 61px;
+    font-weight: 700;
+    line-height: 73.2px;
+    text-align: left;
+    margin: 0;
+}
+.modal-task-description{
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin: 0;
+}
+.assigned{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+.assigned p{
+    margin: 0;
+}
+.assigned-user{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+.modal-subtasks{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.modal-buttons{
+    display: flex;
+    justify-content: end;
+}
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+#deleteTaskButton {
+    background-color: red;
+    color: white;
+}
+
+#editTaskButton {
+    background-color: green;
+    color: white;
+}
+

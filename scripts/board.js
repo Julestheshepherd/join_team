@@ -1,4 +1,4 @@
-import { getDatabase, ref, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
+import { getDatabase, ref, onValue, update, remove } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-database.js";
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 // Firebase Database initialisieren
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const tasks = snapshot.val();
                 if (tasks) {
                     populateBoard(tasks);
-                    initializeDragAndDrop(); // Drag-and-Drop nach dem Laden der Tasks initialisieren
+                    initializeDragAndDrop();
                 } else {
                     console.log("No tasks found.");
                 }
@@ -60,9 +60,12 @@ function populateBoard(tasks) {
                 <div class="user-badges">
                     ${generateUserBadges(task.assignedTo)}
                 </div>
-                <img class="priority" src="./assets/img/icons/${getPriorityIcon(task.priority)}" alt="">
+                <img class="priority" src="./assets/img/icons/priority/${getPriorityIcon(task.priority)}" alt="">
             </div>
         `;
+
+        // Event Listener zum Öffnen des Modals hinzufügen
+        taskElement.addEventListener('click', () => openModal(task, taskId));
 
         switch (task.status) {
             case 'To Do':
@@ -141,12 +144,10 @@ function initializeDragAndDrop() {
             draggingElement.classList.remove('dragging');
             draggingElement.style.display = 'block';
 
-            // Stelle sicher, dass das Element nicht mehr in seinem ursprünglichen Container ist
             if (draggingElement.parentElement) {
                 draggingElement.parentElement.removeChild(draggingElement);
             }
 
-            // Füge das Element erneut in den aktuellen Container ein
             if (placeholder.parentElement) {
                 placeholder.parentElement.appendChild(draggingElement);
             }
@@ -245,4 +246,126 @@ function initializeDragAndDrop() {
                 return null;
         }
     }
+}
+
+function openModal(task, taskId) {
+    const modal = document.getElementById("taskModal");
+
+    const date = task.dueDate;
+    const germanDate = formatDateToGerman(date);
+
+    // Generiere die Benutzer-Badges und Namen in einer horizontalen Anordnung
+    let assignedToList = '';
+    task.assignedTo.forEach(user => {
+        assignedToList += `
+            <div class="assigned-user">
+                <div class="circle">${user.name.match(/\b\w/g).join('').toUpperCase()}</div> 
+                <span>${user.name}</span>
+            </div>
+        `;
+    });
+
+    // Subtasks als Objekte behandeln, die eine 'completed'-Eigenschaft haben
+    const subtasks = task.subtasks && Array.isArray(task.subtasks) ? task.subtasks.map(subtask => {
+        if (typeof subtask === 'string') {
+            return { title: subtask, completed: false };
+        }
+        return subtask;
+    }) : [];
+
+    const subtasksList = subtasks.length > 0 ? subtasks.map((subtask, index) => {
+        const isChecked = subtask.completed ? 'checked' : '';
+        return `
+            <div class="subtask-item">
+                <input type="checkbox" id="subtask-${index}" data-index="${index}" ${isChecked}>
+                <label for="subtask-${index}">${subtask.title}</label>
+            </div>
+        `;
+    }).join('') : '<p>No subtasks available.</p>';
+
+    const modalContent = /* HTML */ `
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="task-lable"><p>${task.category}</p></div>    
+                <span class="close" id="closeModal"><img src="./assets/img/icons/close_bk.png" alt="close icon"></span>
+            </div>
+            <p class="modal-task-title">${task.title}</p>
+            <p class="modal-task-description">${task.description}</p>
+            <p class="modal-task-duedate">Due date: ${germanDate}</p>
+            <div>Priority: ${task.priority} <img class="priority" src="./assets/img/icons/priority/${getPriorityIcon(task.priority)}" alt="priority icon"></div> 
+            <div class="assigned">
+                <p>Assigned to:</p>
+                <ul>
+                    ${assignedToList}
+                </ul>
+            </div>
+            <div class="modal-subtasks">Subtasks: ${subtasksList}</div>
+            
+            <div class="modal-buttons">
+                <button id="deleteTaskButton">Delete</button>
+                <button id="editTaskButton">Edit</button>
+            </div>
+        </div>
+    `;
+
+    modal.innerHTML = modalContent;
+    modal.style.display = "block";
+
+    // Event Listener für das Schließen des Modals
+    document.getElementById("closeModal").addEventListener('click', () => {
+        modal.style.display = "none";
+    });
+
+    // Event Listener für das Löschen des Tasks
+    document.getElementById("deleteTaskButton").addEventListener('click', () => {
+        const taskRef = ref(database, `tasks/${taskId}`);
+        remove(taskRef)
+            .then(() => {
+                modal.style.display = "none";
+                alert("Task deleted successfully!");
+            })
+            .catch((error) => {
+                console.error("Error deleting task:", error);
+                alert("Failed to delete task.");
+            });
+    });
+
+    // Event Listener für das Bearbeiten des Tasks
+    document.getElementById("editTaskButton").addEventListener('click', () => {
+        alert("Edit task functionality not implemented yet.");
+    });
+
+    // Event Listener für das Ändern der Subtask-Checkboxen
+    subtasks.forEach((subtask, index) => {
+        const checkbox = document.getElementById(`subtask-${index}`);
+        checkbox.addEventListener('change', () => {
+            subtasks[index].completed = checkbox.checked;
+            updateTaskProgress(taskId, subtasks);
+        });
+    });
+}
+
+
+function updateTaskProgress(taskId, subtasks) {
+    const completedSubtasks = subtasks.filter(subtask => subtask.completed).length;
+    const progress = (completedSubtasks / subtasks.length) * 100;
+
+    const taskRef = ref(database, `tasks/${taskId}`);
+    update(taskRef, { subtasks: subtasks, progress: progress })
+        .then(() => {
+            console.log(`Task ${taskId} subtasks updated.`);
+            // Optional: Aktualisiere das Board hier, wenn du den Fortschritt live sehen willst
+        })
+        .catch((error) => {
+            console.error(`Error updating task ${taskId} subtasks:`, error);
+        });
+}
+
+function formatDateToGerman(dateString) {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
 }
