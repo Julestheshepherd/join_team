@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (tasks) {
                     populateBoard(tasks);
                     initializeDragAndDrop();
+                    setupSearchFunction(tasks);
                 } else {
                     console.log("No tasks found.");
                 }
@@ -302,14 +303,14 @@ function openModal(task, taskId) {
             <div class="modal-subtasks">Subtasks: ${subtasksList}</div>
             
             <div class="modal-buttons">
-                <button id="deleteTaskButton">Delete</button>
-                <button id="editTaskButton">Edit</button>
+                <button class="modal-task-btn" id="deleteTaskButton"><img class="add-task-btn-icon" src="./assets/img/icons/delete.png"> Delete</button>
+                <button class="modal-task-btn" id="editTaskButton"><img class="add-task-btn-icon" src="./assets/img/icons/edit.png"> Edit</button>
             </div>
         </div>
     `;
 
     modal.innerHTML = modalContent;
-    modal.style.display = "block";
+    modal.style.display = "flex";
 
     // Event Listener für das Schließen des Modals
     document.getElementById("closeModal").addEventListener('click', () => {
@@ -368,4 +369,31 @@ function formatDateToGerman(dateString) {
     const year = date.getFullYear();
 
     return `${day}.${month}.${year}`;
+}
+
+// Suchfunktion
+function setupSearchFunction(tasks) {
+    const searchInput = document.querySelector('.search-field-input');
+    const searchButton = document.querySelector('.search-field-btn');
+
+    function filterTasks() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredTasks = {};
+
+        Object.keys(tasks).forEach(taskId => {
+            const task = tasks[taskId];
+            if (task.title.toLowerCase().includes(searchTerm) || task.description.toLowerCase().includes(searchTerm)) {
+                filteredTasks[taskId] = task;
+            }
+        });
+
+        populateBoard(filteredTasks);
+    }
+
+    searchButton.addEventListener('click', filterTasks);
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            filterTasks();
+        }
+    });
 }
