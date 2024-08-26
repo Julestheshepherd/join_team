@@ -233,7 +233,7 @@ function initializeDragAndDrop() {
     }
 
     function getStatusFromColumn(column) {
-        const columnTitle = column.querySelector('h2').textContent.trim();
+        const columnTitle = column.querySelector('p').textContent.trim();
         switch (columnTitle) {
             case 'To Do':
                 return 'To Do';
@@ -397,3 +397,59 @@ function setupSearchFunction(tasks) {
         }
     });
 }
+
+
+
+
+// Event Listener zum Öffnen des AddTaskModals beim Klicken auf den "Add task"-Button
+document.getElementById('add-task-btn').addEventListener('click', openAddTaskModal);
+
+// Event Listener zum Öffnen des AddTaskModals beim Klicken auf eines der Plus-Icons
+const plusIcons = document.querySelectorAll('.add-task-icon');
+plusIcons.forEach(icon => {
+    icon.addEventListener('click', openAddTaskModal);
+});
+
+// Funktion zum Öffnen des AddTaskModals
+function openAddTaskModal() {
+    // Stelle sicher, dass das `taskModal` geschlossen ist
+    const taskModal = document.getElementById("taskModal");
+    if (taskModal) {
+        taskModal.style.display = "none";
+    }
+
+    // Öffne das `addTaskModal`
+    const addTaskModal = document.getElementById("addTaskModal");
+    addTaskModal.style.display = "flex"; // Modal sichtbar machen
+}
+
+// Funktion zum Schließen des AddTaskModals
+function closeAddTaskModal() {
+    const addTaskModal = document.getElementById("addTaskModal");
+    addTaskModal.style.display = "none"; // Modal verstecken
+
+    // Optional: Setze alle Formularfelder zurück
+    document.getElementById("title").value = '';
+    document.getElementById("description").value = '';
+    document.getElementById("dueDate").value = '';
+    document.getElementById("selectedContacts").innerHTML = '';
+    document.getElementById("subtask-list").innerHTML = '';
+}
+
+// Event Listener zum Schließen des AddTaskModals beim Klicken auf das "X"-Symbol
+document.getElementById('closeAddTaskModal').addEventListener('click', closeAddTaskModal);
+
+// Optional: Schließen des AddTaskModals beim Klicken außerhalb des Modal-Inhalts
+window.addEventListener('click', (event) => {
+    const addTaskModal = document.getElementById("addTaskModal");
+    if (event.target === addTaskModal) {
+        closeAddTaskModal();
+    }
+});
+
+
+
+
+
+
+

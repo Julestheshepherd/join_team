@@ -204,3 +204,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+// Event Listener für den Cancel-Button
+document.querySelector('.add-task-cancel-btn').addEventListener('click', (event) => {
+    event.preventDefault(); 
+    clearTaskForm();  
+});
+
+// Funktion zum Leeren der Formularfelder
+function clearTaskForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('dueDate').value = '';
+    document.getElementById('dropdownBtn').textContent = 'Select contacts to assign';
+    document.getElementById('categoryDropdownBtn').textContent = 'Select task category';
+    document.getElementById('subtask-list').innerHTML = '';
+    document.getElementById('selectedContacts').innerHTML = '';
+}

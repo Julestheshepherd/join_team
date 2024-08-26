@@ -23,25 +23,38 @@
                     <input class="search-field-input" type="text" placeholder="Find Task">
                     <button class="search-field-btn"><img src="./assets/img/icons/search.png"></button>    
                 </div>
-                <button class="add-task-btn">Add task <img class="add-task-btn-icon" src="./assets/img/icons/add.png"></button>    
+                <button class="add-task-btn" id="add-task-btn">Add task <img class="add-task-btn-icon" src="./assets/img/icons/add.png"></button>    
             </div>
         </div>
   
         <div class="board">
             <div class="column">
-                <h2>To Do</h2>
+                <div class="colums-title-container">
+                    <p class="column-title">To Do</p>
+                    <img class="add-task-icon" src="./assets/img/icons/plus_button.png">    
+                </div>
+                
                 <div class="no-task">No tasks To do</div>
             </div>
             <div class="column">
-                <h2>In Progress</h2>
+                <div class="colums-title-container">
+                    <p class="column-title">In Progress</p>
+                    <img class="add-task-icon" src="./assets/img/icons/plus_button.png">    
+                </div>
                 <div class="no-task">No tasks in progress</div>
             </div>
             <div class="column">
-                <h2>Await feedback</h2>
+                <div class="colums-title-container">
+                    <p class="column-title">Await feedback</p>
+                    <img class="add-task-icon" src="./assets/img/icons/plus_button.png">    
+                </div>
                 <div class="no-task">No tasks await feedback</div>
             </div>
             <div class="column">
-                <h2>Done</h2>
+                <div class="colums-title-container">
+                    <p class="column-title">Done</p>
+                    <img class="add-task-icon" src="./assets/img/icons/plus_button.png">    
+                </div>
                 <div class="no-task">No tasks done</div>
             </div>
         </div>
@@ -63,11 +76,111 @@
         </div>
     </div>
 
+
+
+
+
+
+    <div id="addTaskModal" class="add-task-modal" style="display: none;">
+        <div class="add-task-modal-content">
+            <span class="close" id="closeAddTaskModal"><img src="./assets/img/icons/close_bk.png" alt="close icon"></span>
+                <div class="add-task-container">
+                    <div class="main-add-task-left">
+                        <div class="add-task-input-group">
+                            <label>Title<span class="star">*</span></label>
+                            <input class="title-input" type="text" id="title" name="title" size="30" maxlength="70" placeholder="Enter the title">
+                        </div>
+    
+                        <div class="add-task-input-group add-task-description">
+                            <label class="add-task-subtitles">Description</label>
+                            <div class="description-input-container">
+                                <textarea class="description-input" id="description" name="description" rows="4" cols="53" placeholder="Enter a Description"></textarea>
+                            </div>
+                        </div>
+    
+                        <div class="add-task-input-group add-task-assigned">
+                            <label class="add-task-subtitles">Assigned to</label>
+                            <div class="custom-dropdown">
+                                <button class="dropdown-btn" id="dropdownBtn">Select contacts to assign</button>
+                                <div class="dropdown-content" id="dropdownContent">
+                                    <!-- Namen und Icons werden hier dynamisch eingefügt -->
+                                </div>
+                            </div>
+                            <div class="selected-contacts" id="selectedContacts">
+                                <!-- Ausgewählte Kontakte werden hier als Icons angezeigt -->
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="task-separator"></div>
+    
+                    <div class="main-add-task-right">
+                        <div class="add-task-input-group add-task-due">
+                            <label class="add-task-subtitles">Due date<span class="star">*</span></label>
+                            <input class="due-date" type="date" id="dueDate" name="dueDate">
+                        </div>
+    
+                        <div class="add-task-input-group add-task-prio">
+                            <label class="add-task-subtitles">Priority</label>
+                            <div class="priority-buttons">
+                                <button class="priority-left" type="button">Urgent <img src="assets/img/icons/urgentsmall.png"></button>
+                                <button class="priority-middle" type="button">Medium <img src="assets/img/icons/mediumsmall.png"></button>
+                                <button class="priority-right" type="button">Low <img src="assets/img/icons/lowsmall.png"></button>
+                            </div>
+                        </div>
+    
+                        <div class="add-task-input-group add-task-category">
+                            <label class="add-task-subtitles">Category<span class="star">*</span></label>
+                            <div class="custom-dropdown">
+                                <button class="dropdown-btn" id="categoryDropdownBtn">Select task category</button>
+                                <div class="dropdown-content" id="categoryDropdownContent">
+                                    <div class="dropdown-item" data-value="technicalTask">Technical Task</div>
+                                    <div class="dropdown-item" data-value="userStory">User Story</div>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="add-task-input-group add-task-subtask">
+                            <label class="add-task-subtitles">Subtasks</label>
+                            <div class="subtask-input">
+                                <div class="subtask-field">
+                                    <input class="subtask-input" type="text" id="subtask" name="subtask" placeholder="Add new Subtask">
+                                    <div id="subtask-icons-container" class="subtask-icons-container">
+                                        <img src="assets/img/icons/plus.png" alt="Add Subtask" id="add-subtask-icon" class="icon">
+                                        <img src="assets/img/icons/acept.png" alt="Confirm" id="confirm-subtask-icon" class="icon">
+                                        <img src="assets/img/icons/chancel.png" alt="Cancel" id="cancel-subtask-icon" class="icon">
+                                    </div>
+                                </div>
+                                <ul id="subtask-list" class="subtask-list"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="required-img">
+                    <img src="assets/img/icons/required.png" alt="">
+                </div>
+    
+                <div class="add-task-footer-btn">
+                    <button class="add-task-cancel-btn">
+                        <span>Cancel</span>
+                        <img src="assets/img/icons/Vector.png" alt="Cancel">
+                    </button>
+                    <button type="submit" class="add-task-create-btn">
+                        <span>Create Task</span>
+                        <img src="assets/img/icons/check_btn.png" alt="Create Task">
+                    </button>
+                </div>
+        </div>
+    </div>
+
+
+
+
     <script type="module" src="./scripts/firebase-init.js"></script>
     <script src="./scripts/include.js"></script>
-    <!-- <script src="./scripts/dragndrop.js"></script> -->
     <script src="./scripts/navigation.js"></script>
     <script type="module" src="./scripts/board.js"></script>
+    <script type="module" src="./scripts/addtask-modal.js"></script>
     <script type="module" src="./scripts/user.js"></script>
     <script type="module" src="./scripts/logout.js"></script>
 </body>

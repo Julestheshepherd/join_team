@@ -84,14 +84,21 @@
     background-color: #f7f7f7;
     border-radius: 10px;
 }
-
-.column h2 {
-    font-size: 20px;
+.colums-title-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.column-title{
+    font-size: 16px;
     font-weight: 700;
     line-height: 24px;
     text-align: left;
-
 }
+.add-task-icon:hover{
+    cursor: pointer;
+}
+
 
 .draggable {
     padding: 16px;
@@ -337,3 +344,374 @@
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+.add-task-modal {
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-task-modal-content {
+    background-color: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close {
+    cursor: pointer;
+}
+
+.close img {
+    width: 24px;
+    height: 24px;
+}
+
+
+.add-task-container{
+    display: flex;
+    width: 100%;
+    gap: 32px;
+}
+.main-add-task-left{
+    width: 50%;
+}
+.main-add-task-right{
+    width: 50%;
+}
+.task-separator{
+
+    border-left: 3px solid black;
+}
+
+label{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+input{
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 21px;
+    width: 90%;
+}
+textarea{
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 21px;
+    width: 90%;
+}
+
+.assigned-to{
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 21px;
+    width: 95%;
+}
+.category-input{
+    border: 1px solid #D1D1D1;
+    border-radius: 10px;
+    padding: 12px 21px;
+    width: 95%;
+}
+
+::placeholder{
+    font-family: inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: #D1D1D1;
+}
+.priority-buttons{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.priority-left,
+.priority-middle,
+.priority-right {
+    border: 0;
+    border-radius: 10px;
+    padding: 12px 10px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+    width: 136px;
+    height: 42px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.priority-left:hover{
+    box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.priority-middle:hover{
+    box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+.priority-right:hover{
+    box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.4);
+}
+
+.priority-left.active {
+    background-color: #ff4d4d; /* Hintergrundfarbe für 'Urgent' */
+    color: white;
+}
+
+.priority-middle.active {
+    background-color: #ffcc00; /* Hintergrundfarbe für 'Medium' */
+    color: white;
+}
+
+.priority-right.active {
+    background-color: #4caf50; /* Hintergrundfarbe für 'Low' */
+    color: white;
+}
+
+
+.add-task-footer-btn{
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+}
+.add-task-cancel-btn{
+    display: flex;
+    align-items: center;
+    border: 1px solid #2A3647;
+    border-radius: 10px;
+    padding: 12px 16px;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+.add-task-create-btn{
+    display: flex;
+    align-items: center;
+    border: 0;
+    background-color: #2A3647;
+    border-radius: 10px;
+    padding: 12px 16px;
+    gap: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: white;
+}
+
+
+
+
+
+
+
+
+.custom-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.dropdown-btn {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.dropdown-btn::after {
+    content: '▼';
+    float: right;
+    margin-right: 10px;
+    font-size: 12px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-item.selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.contact-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.contact-name {
+    flex-grow: 1;
+}
+
+.show {
+    display: block;
+}
+
+/* Styles für die ausgewählten Kontakt-Icons */
+.selected-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.selected-contact-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #007bff;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+.subtask-input {
+    position: relative;
+}
+
+.subtask-field {
+    position: relative;
+}
+
+.subtask-input input {
+    width: 100%;
+    padding-right: 50px; /* Platz für das Icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.subtask-icons-container {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.icon {
+    cursor: pointer;
+    display: none; /* Standardmäßig ausgeblendet */
+    width: 16px;
+    height: 16px;
+}
+
+#add-subtask-icon {
+    display: block; /* Das Add-Icon ist standardmäßig sichtbar */
+}
+
+.subtask-list {
+    margin-top: 10px;
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.subtask-list li {
+    padding: 5px 0; /* Nur ein bisschen Platz zwischen den Elementen */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    padding: 6px 16px;
+}
+
+.subtask-list li .edit-icon,
+.subtask-list li .delete-icon {
+    display: none;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+.subtask-list li:hover .edit-icon,
+.subtask-list li:hover .delete-icon {
+    display: inline-block; /* Anzeigen der Icons beim Hovern */
+}
+.subtask-list li:hover {
+    background-color: #e3e3e3;
+    cursor: pointer;
+    border-radius: 10px;
+}
+.subtask-list-item{
+    display: flex;
+}
